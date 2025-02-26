@@ -1,249 +1,233 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Harga Minyak</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        input {
+            width: 120px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: right;
+        }
+        
+        .result {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .note {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Kalkulator Harga Minyak&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 20px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #2c3e50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>table {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-collapse: collapse;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>th, td {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>th {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3498db;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>tr:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>input {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: right;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.result {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #27ae60;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.input-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f8f9fa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.note {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #7f8c8d;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Kalkulator Harga Jual Minyak&lt;/h1&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="input-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;th&gt;Parameter&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;th&gt;500ml&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;th&gt;900ml&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;Harga Pokok/Kg (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="harga_pokok_500" value="18500"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="harga_pokok_900" value="18500"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;Biaya Plastik (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="plastik_500" value="525"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="plastik_900" value="875"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;Margin Per Pcs (%)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="margin_pcs_500" value="16"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="margin_pcs_900" value="16"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;Margin Per Dus (%)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="margin_dus_500" value="13"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" id="margin_dus_900" value="13"&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;th&gt;Komponen Harga&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;th&gt;500ml&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;th&gt;900ml&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Pokok/Liter (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_liter_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_liter_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Pokok Per Pcs (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_pokok_pcs_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_pokok_pcs_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual Per Pcs (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_pcs_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_pcs_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual 3-4 Pcs (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_34_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_34_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual &gt;5 Pcs (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_5_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_5_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual Per Dus (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual Dus 3-4 (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_34_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_34_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td&gt;Harga Jual Dus &gt;5 (Rp)&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_5_500"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;td class="result" id="harga_jual_dus_5_900"&gt;-&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/table&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>* Perhitungan menggunakan pembulatan ke ratusan terdekat</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const formatter = new Intl.NumberFormat('id-ID', {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>style: 'currency',</p>
-<p class="p1"><span class="Apple-converted-space">            </span>currency: 'IDR',</p>
-<p class="p1"><span class="Apple-converted-space">            </span>maximumFractionDigits: 0</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function calculate() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Input values</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const inputs = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>500: {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>hargaPokok: parseFloat(document.getElementById('harga_pokok_500').value),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>plastik: parseFloat(document.getElementById('plastik_500').value),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>marginPcs: parseFloat(document.getElementById('margin_pcs_500').value)/100,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>marginDus: parseFloat(document.getElementById('margin_dus_500').value)/100,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>volume: 0.5,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>isiDus: 24</p>
-<p class="p1"><span class="Apple-converted-space">                </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                </span>900: {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>hargaPokok: parseFloat(document.getElementById('harga_pokok_900').value),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>plastik: parseFloat(document.getElementById('plastik_900').value),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>marginPcs: parseFloat(document.getElementById('margin_pcs_900').value)/100,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>marginDus: parseFloat(document.getElementById('margin_dus_900').value)/100,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>volume: 0.9,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>isiDus: 12</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Calculate for each size</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Object.keys(inputs).forEach(size =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const data = inputs[size];</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Harga per liter</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const hargaPerLiter = Math.floor(data.hargaPokok / 1.1 / 100) * 100;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Harga pokok per pcs</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const hargaPokokPcs = hargaPerLiter * data.volume;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Harga jual per pcs</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const hargaJualPcs = Math.round(</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>(hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginPcs)) / 100</p>
-<p class="p1"><span class="Apple-converted-space">                </span>) * 100;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Harga dus</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const hargaDus = Math.round(</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>(hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginDus)) * data.isiDus / 1000</p>
-<p class="p1"><span class="Apple-converted-space">                </span>) * 1000;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Update results</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_liter_${size}`).textContent = formatter.format(hargaPerLiter);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_pokok_pcs_${size}`).textContent = formatter.format(hargaPokokPcs);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_pcs_${size}`).textContent = formatter.format(hargaJualPcs);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_34_${size}`).textContent = formatter.format(hargaJualPcs - 100);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_5_${size}`).textContent = formatter.format(hargaJualPcs - 200);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_dus_${size}`).textContent = formatter.format(hargaDus);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_dus_34_${size}`).textContent = formatter.format(hargaDus - 1500);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`harga_jual_dus_5_${size}`).textContent = formatter.format(hargaDus - 3000);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Add event listeners for real-time calculation</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('input').forEach(input =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>input.addEventListener('input', calculate);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Initial calculation</p>
-<p class="p1"><span class="Apple-converted-space">        </span>calculate();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <div class="container">
+        <h1>Kalkulator Harga Jual Minyak</h1>
+        
+        <div class="input-section">
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>500ml</th>
+                    <th>900ml</th>
+                </tr>
+                <tr>
+                    <td>Harga Pokok/Kg (Rp)</td>
+                    <td><input type="number" id="harga_pokok_500" value="18500"></td>
+                    <td><input type="number" id="harga_pokok_900" value="18500"></td>
+                </tr>
+                <tr>
+                    <td>Biaya Plastik (Rp)</td>
+                    <td><input type="number" id="plastik_500" value="525"></td>
+                    <td><input type="number" id="plastik_900" value="875"></td>
+                </tr>
+                <tr>
+                    <td>Margin Per Pcs (%)</td>
+                    <td><input type="number" id="margin_pcs_500" value="16"></td>
+                    <td><input type="number" id="margin_pcs_900" value="16"></td>
+                </tr>
+                <tr>
+                    <td>Margin Per Dus (%)</td>
+                    <td><input type="number" id="margin_dus_500" value="13"></td>
+                    <td><input type="number" id="margin_dus_900" value="13"></td>
+                </tr>
+            </table>
+        </div>
+
+        <table>
+            <tr>
+                <th>Komponen Harga</th>
+                <th>500ml</th>
+                <th>900ml</th>
+            </tr>
+            <tr>
+                <td>Harga Pokok/Liter (Rp)</td>
+                <td class="result" id="harga_liter_500">-</td>
+                <td class="result" id="harga_liter_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Pokok Per Pcs (Rp)</td>
+                <td class="result" id="harga_pokok_pcs_500">-</td>
+                <td class="result" id="harga_pokok_pcs_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Per Pcs (Rp)</td>
+                <td class="result" id="harga_jual_pcs_500">-</td>
+                <td class="result" id="harga_jual_pcs_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual 3-4 Pcs (Rp)</td>
+                <td class="result" id="harga_jual_34_500">-</td>
+                <td class="result" id="harga_jual_34_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual >5 Pcs (Rp)</td>
+                <td class="result" id="harga_jual_5_500">-</td>
+                <td class="result" id="harga_jual_5_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Per Dus (Rp)</td>
+                <td class="result" id="harga_jual_dus_500">-</td>
+                <td class="result" id="harga_jual_dus_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Dus 3-4 (Rp)</td>
+                <td class="result" id="harga_jual_dus_34_500">-</td>
+                <td class="result" id="harga_jual_dus_34_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Dus >5 (Rp)</td>
+                <td class="result" id="harga_jual_dus_5_500">-</td>
+                <td class="result" id="harga_jual_dus_5_900">-</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            * Perhitungan menggunakan pembulatan ke ratusan terdekat
+        </div>
+    </div>
+
+    <script>
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            maximumFractionDigits: 0
+        });
+
+        function calculate() {
+            // Input values
+            const inputs = {
+                500: {
+                    hargaPokok: parseFloat(document.getElementById('harga_pokok_500').value),
+                    plastik: parseFloat(document.getElementById('plastik_500').value),
+                    marginPcs: parseFloat(document.getElementById('margin_pcs_500').value)/100,
+                    marginDus: parseFloat(document.getElementById('margin_dus_500').value)/100,
+                    volume: 0.5,
+                    isiDus: 24
+                },
+                900: {
+                    hargaPokok: parseFloat(document.getElementById('harga_pokok_900').value),
+                    plastik: parseFloat(document.getElementById('plastik_900').value),
+                    marginPcs: parseFloat(document.getElementById('margin_pcs_900').value)/100,
+                    marginDus: parseFloat(document.getElementById('margin_dus_900').value)/100,
+                    volume: 0.9,
+                    isiDus: 12
+                }
+            };
+
+            // Calculate for each size
+            Object.keys(inputs).forEach(size => {
+                const data = inputs[size];
+                
+                // Harga per liter
+                const hargaPerLiter = Math.floor(data.hargaPokok / 1.1 / 100) * 100;
+                
+                // Harga pokok per pcs
+                const hargaPokokPcs = hargaPerLiter * data.volume;
+                
+                // Harga jual per pcs
+                const hargaJualPcs = Math.round(
+                    (hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginPcs)) / 100
+                ) * 100;
+                
+                // Harga dus
+                const hargaDus = Math.round(
+                    (hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginDus)) * data.isiDus / 1000
+                ) * 1000;
+
+                // Update results
+                document.getElementById(`harga_liter_${size}`).textContent = formatter.format(hargaPerLiter);
+                document.getElementById(`harga_pokok_pcs_${size}`).textContent = formatter.format(hargaPokokPcs);
+                document.getElementById(`harga_jual_pcs_${size}`).textContent = formatter.format(hargaJualPcs);
+                document.getElementById(`harga_jual_34_${size}`).textContent = formatter.format(hargaJualPcs - 100);
+                document.getElementById(`harga_jual_5_${size}`).textContent = formatter.format(hargaJualPcs - 200);
+                document.getElementById(`harga_jual_dus_${size}`).textContent = formatter.format(hargaDus);
+                document.getElementById(`harga_jual_dus_34_${size}`).textContent = formatter.format(hargaDus - 1500);
+                document.getElementById(`harga_jual_dus_5_${size}`).textContent = formatter.format(hargaDus - 3000);
+            });
+        }
+
+        // Add event listeners for real-time calculation
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        // Initial calculation
+        calculate();
+    </script>
 </body>
 </html>
