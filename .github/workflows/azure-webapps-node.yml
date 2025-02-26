@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Harga Minyak</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        input {
+            width: 120px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: right;
+        }
+        
+        .result {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .note {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Harga Jual Minyak</h1>
+        
+        <div class="input-section">
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>500ml</th>
+                    <th>900ml</th>
+                </tr>
+                <tr>
+                    <td>Harga Pokok/Kg (Rp)</td>
+                    <td><input type="number" id="harga_pokok_500" value="18500"></td>
+                    <td><input type="number" id="harga_pokok_900" value="18500"></td>
+                </tr>
+                <tr>
+                    <td>Biaya Plastik (Rp)</td>
+                    <td><input type="number" id="plastik_500" value="525"></td>
+                    <td><input type="number" id="plastik_900" value="875"></td>
+                </tr>
+                <tr>
+                    <td>Margin Per Pcs (%)</td>
+                    <td><input type="number" id="margin_pcs_500" value="16"></td>
+                    <td><input type="number" id="margin_pcs_900" value="16"></td>
+                </tr>
+                <tr>
+                    <td>Margin Per Dus (%)</td>
+                    <td><input type="number" id="margin_dus_500" value="13"></td>
+                    <td><input type="number" id="margin_dus_900" value="13"></td>
+                </tr>
+            </table>
+        </div>
+
+        <table>
+            <tr>
+                <th>Komponen Harga</th>
+                <th>500ml</th>
+                <th>900ml</th>
+            </tr>
+            <tr>
+                <td>Harga Pokok/Liter (Rp)</td>
+                <td class="result" id="harga_liter_500">-</td>
+                <td class="result" id="harga_liter_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Pokok Per Pcs (Rp)</td>
+                <td class="result" id="harga_pokok_pcs_500">-</td>
+                <td class="result" id="harga_pokok_pcs_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Per Pcs (Rp)</td>
+                <td class="result" id="harga_jual_pcs_500">-</td>
+                <td class="result" id="harga_jual_pcs_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual 3-4 Pcs (Rp)</td>
+                <td class="result" id="harga_jual_34_500">-</td>
+                <td class="result" id="harga_jual_34_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual >5 Pcs (Rp)</td>
+                <td class="result" id="harga_jual_5_500">-</td>
+                <td class="result" id="harga_jual_5_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Per Dus (Rp)</td>
+                <td class="result" id="harga_jual_dus_500">-</td>
+                <td class="result" id="harga_jual_dus_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Dus 3-4 (Rp)</td>
+                <td class="result" id="harga_jual_dus_34_500">-</td>
+                <td class="result" id="harga_jual_dus_34_900">-</td>
+            </tr>
+            <tr>
+                <td>Harga Jual Dus >5 (Rp)</td>
+                <td class="result" id="harga_jual_dus_5_500">-</td>
+                <td class="result" id="harga_jual_dus_5_900">-</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            * Perhitungan menggunakan pembulatan ke ratusan terdekat
+        </div>
+    </div>
+
+    <script>
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            maximumFractionDigits: 0
+        });
+
+        function calculate() {
+            // Input values
+            const inputs = {
+                500: {
+                    hargaPokok: parseFloat(document.getElementById('harga_pokok_500').value),
+                    plastik: parseFloat(document.getElementById('plastik_500').value),
+                    marginPcs: parseFloat(document.getElementById('margin_pcs_500').value)/100,
+                    marginDus: parseFloat(document.getElementById('margin_dus_500').value)/100,
+                    volume: 0.5,
+                    isiDus: 24
+                },
+                900: {
+                    hargaPokok: parseFloat(document.getElementById('harga_pokok_900').value),
+                    plastik: parseFloat(document.getElementById('plastik_900').value),
+                    marginPcs: parseFloat(document.getElementById('margin_pcs_900').value)/100,
+                    marginDus: parseFloat(document.getElementById('margin_dus_900').value)/100,
+                    volume: 0.9,
+                    isiDus: 12
+                }
+            };
+
+            // Calculate for each size
+            Object.keys(inputs).forEach(size => {
+                const data = inputs[size];
+                
+                // Harga per liter
+                const hargaPerLiter = Math.floor(data.hargaPokok / 1.1 / 100) * 100;
+                
+                // Harga pokok per pcs
+                const hargaPokokPcs = hargaPerLiter * data.volume;
+                
+                // Harga jual per pcs
+                const hargaJualPcs = Math.round(
+                    (hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginPcs)) / 100
+                ) * 100;
+                
+                // Harga dus
+                const hargaDus = Math.round(
+                    (hargaPokokPcs + data.plastik + (hargaPokokPcs * data.marginDus)) * data.isiDus / 1000
+                ) * 1000;
+
+                // Update results
+                document.getElementById(`harga_liter_${size}`).textContent = formatter.format(hargaPerLiter);
+                document.getElementById(`harga_pokok_pcs_${size}`).textContent = formatter.format(hargaPokokPcs);
+                document.getElementById(`harga_jual_pcs_${size}`).textContent = formatter.format(hargaJualPcs);
+                document.getElementById(`harga_jual_34_${size}`).textContent = formatter.format(hargaJualPcs - 100);
+                document.getElementById(`harga_jual_5_${size}`).textContent = formatter.format(hargaJualPcs - 200);
+                document.getElementById(`harga_jual_dus_${size}`).textContent = formatter.format(hargaDus);
+                document.getElementById(`harga_jual_dus_34_${size}`).textContent = formatter.format(hargaDus - 1500);
+                document.getElementById(`harga_jual_dus_5_${size}`).textContent = formatter.format(hargaDus - 3000);
+            });
+        }
+
+        // Add event listeners for real-time calculation
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html># This workflow will build and push a node.js application to an Azure Web App when a commit is pushed to your default branch.
+#
+# This workflow assumes you have already created the target Azure App Service web app.
+# For instructions see https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=linux&pivots=development-environment-cli
+#
+# To configure this workflow:
+#
+# 1. Download the Publish Profile for your Azure Web App. You can download this file from the Overview page of your Web App in the Azure Portal.
+#    For more information: https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions?tabs=applevel#generate-deployment-credentials
+#
+# 2. Create a secret in your repository named AZURE_WEBAPP_PUBLISH_PROFILE, paste the publish profile contents as the value of the secret.
+#    For instructions on obtaining the publish profile see: https://docs.microsoft.com/azure/app-service/deploy-github-actions#configure-the-github-secret
+#
+# 3. Change the value for the AZURE_WEBAPP_NAME. Optionally, change the AZURE_WEBAPP_PACKAGE_PATH and NODE_VERSION environment variables below.
+#
+# For more information on GitHub Actions for Azure: https://github.com/Azure/Actions
+# For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: your-app-name    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '20.x'                # set this to the node version to use
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v4
+      with:
+        name: node-app
+        path: .
+
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: node-app
+
+    - name: 'Deploy to Azure WebApp'
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
